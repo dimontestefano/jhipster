@@ -1,0 +1,35 @@
+# ===================================================================
+# JHipster Sample Spring Cloud Config.
+# ===================================================================
+
+# Property used on app startup to check the config server status
+configserver:
+    name: AccedoNext Registry Config Server
+    status: Connected to AccedoNext Registry Config Server!
+
+# Default JWT secret token (to be changed in production!)
+jhipster:
+    security:
+        authentication:
+            jwt:
+                # It is recommended to encode the secret key in Base64, using the `base64-secret` property.
+                # For compabitibily issues with applications generated with older JHipster releases,
+                # we use the non Base64-encoded `secret` property here.
+                # secret: KjqgxSoxeyFrliViNswBQsudDiJDCs4s
+                # The `base64-secret` property is recommended if you use JHipster v5.3.0+
+                # (you can type `echo 'secret-key'|base64` on your command line)
+                # base64-secret: S2pxZ3hTb3hleUZybGlWaU5zd0JRc3VkRGlKRENzNHM=
+                base64-secret: YWRiMTA1YzY0ZjY1NDBiMjMyMTkyNDkxOGQ1OTFhOWQzMDc2YmNjNDRmZjQyMjlhYjJlNTQyYjYyMWY0Yzg5ZDdhZGQ3ZWE2NTMxNzUxM2M5NzQzOThlNDUxNGJkYjIyNWJhMGMyM2Y1MGQ4OWNmZTJkZTM0MWQxNDg2NzEyNTA=
+                # Token is valid 24 hours
+                token-validity-in-seconds: 86400
+                token-validity-in-seconds-for-remember-me: 2592000
+
+# Enable /management/logfile endpoint for all apps
+logging:
+    path: /logs
+    file: ${spring.application.name}.log
+
+zuul: # those values must be configured depending on the application specific needs
+    ignore-security-headers: false
+    ignored-headers: cookie,set-cookie
+    sensitiveHeaders: Cookie,Set-Cookie
